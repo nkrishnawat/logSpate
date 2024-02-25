@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+ul {padding-top:1em}
+li {padding-bottom:1em}
+
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+h1, p {
+  font-family: Lato;
+}**/
