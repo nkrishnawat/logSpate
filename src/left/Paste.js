@@ -2,6 +2,8 @@ import React from "react";
 import List from "./List";
 import { useState } from "react";
 import { useEffect } from "react";
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';  
 
 function Paste() {
     const Log = "LOG";
@@ -47,7 +49,7 @@ function Paste() {
         const newLogList = [{ text: newLogValue, id: logList.length + 1, dtLocal: new Date().toLocaleString('en-US') }, ...logList];
         setLogList(newLogList);
         setNewLogValue(""); // Reset the text area value
-        localStorage.setItem('items', JSON.stringify(logList));
+        localStorage.setItem('items', JSON.stringify([{ text: newLogValue, id: logList.length + 1, dtLocal: new Date().toLocaleString('en-US') }, ...logList]));
     };
 
     const clearList = () => {
@@ -89,10 +91,10 @@ function Paste() {
                     onKeyDown={handleKeyDown}
                     onChange={handleTextareaChange} // Update the state as the user types
                 ></textarea>
-                <button style={{width: '88%', height: '4%', display: "block",  marginLeft: '3%', background: 'white'}} value={Log} onClick={appendToList}><p style={{FontFace: 'Mono', marginTop:'2%', fontWeight: 'bold', fontSize: '24px'}}>LOG</p></button>
-                <button style={{width: '88%', height: '3%', display: "block", marginLeft: '3%', background: 'white'}} value={Log} onClick={clearPad}><p style={{FontFace: 'Mono', marginTop:'2%', fontWeight: 'bold', fontSize: '14px'}}>Clear Text Pad</p></button>
-                <button style={{width: '88%', height: '3%', display: "block", float:'left', marginLeft: '3%', background: 'white'}} value={Log} onClick={clearList}><p style={{FontFace: 'Mono', marginTop:'2%', fontWeight: 'bold', fontSize: '14px'}}>Clear All Logs - (NOT Permanent Delete)</p></button>
-                <button style={{width: '88%', height: '3%', display: "block", float:'left', marginLeft: '3%', background: 'white'}} value={Log} onClick={clearListPermanently}><p style={{FontFace: 'Mono', marginTop:'2%', fontWeight: 'bold', fontSize: '14px'}}>Clear Storage (Permanent Delete)</p></button>
+                <Button variant="dark" onClick={appendToList} style={{width: '84%', height: '3%', display: "block", float:'left', marginLeft: '3%', marginBottom: '0.5%', marginTop: '0.5%'}}>LOG</Button>
+                <Button variant="dark" onClick={clearPad} style={{width: '84%', height: '3%', display: "block", float:'left', marginLeft: '3%', marginBottom: '0.5%', marginTop: '0.0%'}}>Clear Text Pad</Button>
+                <Button variant="dark" onClick={clearList} style={{width: '84%', height: '3%', display: "block", float:'left', marginLeft: '3%', marginBottom: '0.5%', marginTop: '0.0%'}}>Clear All Logs - (NOT Permanent Delete)</Button>
+                <Button variant="dark" onClick={clearListPermanently} style={{width: '84%', height: '3%', display: "block", float:'left', marginLeft: '3%', marginBottom: '0.5%', marginTop: '0.0%'}}>Clear Storage (Permanent Delete)</Button>
             </div>
             <div style={{height: '100%', flex: 2, overflow:'auto'}}>
                 <pre>
