@@ -47,6 +47,7 @@ function Paste() {
 
     const appendToList = () => {
         const newLogList = [{ text: newLogValue, id: logList.length + 1, dtLocal: new Date().toLocaleString('en-US') }, ...logList];
+        //alert(JSON.stringify(newLogList));
         setLogList(newLogList);
         setNewLogValue(""); // Reset the text area value
         localStorage.setItem('items', JSON.stringify([{ text: newLogValue, id: logList.length + 1, dtLocal: new Date().toLocaleString('en-US') }, ...logList]));
@@ -62,6 +63,11 @@ function Paste() {
 
     const handleTextareaChange = (e) => {
         setNewLogValue(e.target.value); // Update the textarea value in the state
+    };
+
+    const updateLogList = (newList) => {
+        localStorage.setItem('items', JSON.stringify(newList));
+        setLogList(newList);
     };
 
     const clearListPermanently = (e) => {
@@ -98,7 +104,7 @@ function Paste() {
             </div>
             <div style={{height: '100%', flex: 2, overflow:'auto'}}>
                 <pre>
-                    <List logList={logList}></List>
+                    <List logList={logList} setLogList={updateLogList}></List>
                 </pre>
             </div>
         </div>

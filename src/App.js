@@ -25,4 +25,4 @@ const Headline = ({ value }) => {
   return <h1 style={{marginLeft: '1%'}}><text value={value} style={{color: 'OldLace', fontFamily: 'Sans-serif' , fontSize: 18}}>{value}</text></h1>;
 };
 
-export default App; 
+export default App;
